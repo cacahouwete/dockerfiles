@@ -8,9 +8,9 @@ RUN apk add --no-cache \
     wget http://static.pdepend.org/php/latest/pdepend.phar && \
     chmod +x pdepend.phar && \
     mv pdepend.phar /usr/local/bin/pdepend && \
-    wget http://static.phpmd.org/php/latest/phpmd.phar && \
-    chmod +x phpmd.phar && \
-    mv phpmd.phar /usr/local/bin/phpmd && \
+#    wget http://static.phpmd.org/php/latest/phpmd.phar && \
+#    chmod +x phpmd.phar && \
+#    mv phpmd.phar /usr/local/bin/phpmd && \
     wget https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar && \
     chmod +x phpcs.phar && \
     mv phpcs.phar /usr/local/bin/phpcs && \
@@ -34,6 +34,7 @@ RUN apk add --no-cache \
 FROM composer as src
 
 RUN composer global require \
+    	phpmd/phpmd \
         phpstan/phpstan \
         phpstan/phpstan-dibi \
         phpstan/phpstan-doctrine \
