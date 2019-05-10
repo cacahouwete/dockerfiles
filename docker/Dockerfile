@@ -1,3 +1,3 @@
-FROM docker/compose:1.18.0
+FROM docker/compose
 
 RUN apk add --no-cache make

@@ -1,4 +1,4 @@
-FROM php:7.2-fpm-alpine as bin
+FROM php:7.3-fpm-alpine as bin
 
 RUN apk add --no-cache \
         wget && \
