@@ -5,9 +5,9 @@ RUN apk add --no-cache \
     wget https://phar.phpunit.de/phploc.phar && \
     chmod +x phploc.phar && \
     mv phploc.phar /usr/local/bin/phploc && \
-    wget http://static.pdepend.org/php/latest/pdepend.phar && \
-    chmod +x pdepend.phar && \
-    mv pdepend.phar /usr/local/bin/pdepend && \
+#    wget http://static.pdepend.org/php/latest/pdepend.phar && \
+#    chmod +x pdepend.phar && \
+#    mv pdepend.phar /usr/local/bin/pdepend && \
 #    wget http://static.phpmd.org/php/latest/phpmd.phar && \
 #    chmod +x phpmd.phar && \
 #    mv phpmd.phar /usr/local/bin/phpmd && \
@@ -35,6 +35,7 @@ FROM composer as src
 
 RUN composer global require \
     	phpmd/phpmd \
+    	pdepend/pdepend \
         phpstan/phpstan \
         phpstan/phpstan-dibi \
         phpstan/phpstan-doctrine \
