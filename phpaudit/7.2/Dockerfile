@@ -1,6 +1,37 @@
 FROM php:7.2-fpm-alpine as bin
 
 RUN apk add --no-cache \
+        ca-certificates \
+        icu-libs \
+        git \
+        unzip \
+        postgresql-dev \
+        nodejs \
+        freetype \
+        libpng \
+        libjpeg-turbo \
+        freetype-dev \
+        libpng-dev \
+        libjpeg-turbo-dev \
+        libzip \
+        libzip-dev \
+        zlib-dev \
+        libxml2-dev
+
+RUN apk add --no-cache --virtual .build-deps \
+        $PHPIZE_DEPS \
+        icu-dev
+
+RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql  && \
+    docker-php-ext-configure zip --with-libzip && \
+      docker-php-ext-configure gd \
+        --with-gd \
+        --with-freetype-dir=/usr/include/ \
+        --with-png-dir=/usr/include/ \
+        --with-jpeg-dir=/usr/include/ && \
+    docker-php-ext-install mysqli zip intl mbstring pdo pdo_mysql pdo_pgsql bcmath gd json soap
+
+RUN apk add --no-cache \
         wget && \
     wget https://phar.phpunit.de/phploc.phar && \
     chmod +x phploc.phar && \
