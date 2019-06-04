@@ -31,6 +31,9 @@ RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql  && \
         --with-jpeg-dir=/usr/include/ && \
     docker-php-ext-install mysqli zip intl mbstring pdo pdo_mysql pdo_pgsql bcmath gd json soap
 
+RUN pecl install apcu redis
+RUN docker-php-ext-enable apcu opcache redis
+
 RUN apk add --no-cache \
         wget && \
     wget https://phar.phpunit.de/phploc.phar && \
