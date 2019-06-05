@@ -71,6 +71,7 @@ RUN composer global require \
     	phpmd/phpmd \
     	pdepend/pdepend \
         phpstan/phpstan \
+        phpstan/phpstan-symfony \
         phpstan/phpstan-dibi \
         phpstan/phpstan-doctrine \
         phpstan/phpstan-phpunit \
