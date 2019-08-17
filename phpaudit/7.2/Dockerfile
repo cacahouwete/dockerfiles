@@ -68,6 +68,7 @@ FROM composer as src
 
 RUN composer global require \
         symfony/flex \
+        symfony/thanks \
     	phpmd/phpmd \
     	pdepend/pdepend \
         phpstan/phpstan \
@@ -77,7 +78,7 @@ RUN composer global require \
         phpstan/phpstan-phpunit \
         phpstan/phpstan-shim \
         phpstan/phpstan-strict-rules \
-        allocine/twigcs
+        friendsoftwig/twigcs
 
 FROM bin
 COPY --from=bin /usr/local/bin/ /usr/local/bin/
