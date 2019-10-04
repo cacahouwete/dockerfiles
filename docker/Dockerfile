@@ -1,3 +1,3 @@
-FROM docker/compose:1.24.1
+FROM docker/compose:latest
 
 RUN apk add --no-cache make
