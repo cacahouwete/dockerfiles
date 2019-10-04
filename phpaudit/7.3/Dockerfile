@@ -31,13 +31,8 @@ RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql  && \
         --with-jpeg-dir=/usr/include/ && \
     docker-php-ext-install mysqli zip intl mbstring pdo pdo_mysql pdo_pgsql bcmath gd json soap
 
-ENV LIBRDKAFKA_VERSION 1.1.0-r0
-
-RUN apk add autoconf gcc g++ librdkafka=$LIBRDKAFKA_VERSION librdkafka-dev=$LIBRDKAFKA_VERSION make \
-        --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/community
-
-RUN pecl install apcu redis rdkafka
-RUN docker-php-ext-enable apcu opcache redis rdkafka
+RUN pecl install apcu redis
+RUN docker-php-ext-enable apcu opcache redis
 
 RUN apk add --no-cache \
         wget && \
