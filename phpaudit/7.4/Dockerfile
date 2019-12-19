@@ -24,12 +24,9 @@ RUN apk add --no-cache --virtual .build-deps \
         icu-dev
 
 RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql  && \
-    docker-php-ext-configure zip --with-libzip && \
       docker-php-ext-configure gd \
-        --with-gd \
-        --with-freetype-dir=/usr/include/ \
-        --with-png-dir=/usr/include/ \
-        --with-jpeg-dir=/usr/include/ && \
+        --with-freetype \
+        --with-jpeg && \
     docker-php-ext-install mysqli zip intl mbstring pdo pdo_mysql pdo_pgsql bcmath gd json soap
 
 RUN pecl install apcu redis
