@@ -71,6 +71,7 @@ RUN composer global require \
         phpstan/phpstan-phpunit \
         phpstan/phpstan-shim \
         phpstan/phpstan-strict-rules \
+        jangregor/phpstan-prophecy \
         friendsoftwig/twigcs
 
 FROM bin
