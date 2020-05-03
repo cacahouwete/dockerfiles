@@ -71,7 +71,6 @@ RUN composer global require \
         phpstan/phpstan-dibi \
         phpstan/phpstan-doctrine \
         phpstan/phpstan-phpunit \
-        phpstan/phpstan-shim \
         phpstan/phpstan-strict-rules \
         jangregor/phpstan-prophecy \
         friendsoftwig/twigcs
