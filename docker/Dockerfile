@@ -3,8 +3,9 @@ FROM docker
 RUN set -xe \
  && apk add --no-cache \
       make \
-      python3 \
- && pip3 install --upgrade pip \
+      curl \
+      py-pip \
+# && pip3 install --upgrade pip \
  && apk add --no-cache --virtual .build-deps \
       gcc \
       libffi-dev \
