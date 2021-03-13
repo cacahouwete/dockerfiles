@@ -5,9 +5,11 @@ RUN set -xe \
       make \
       curl \
       py-pip \
-# && pip3 install --upgrade pip \
+ && pip3 install --upgrade pip \
  && apk add --no-cache --virtual .build-deps \
       gcc \
+      rust \
+      cargo \
       libffi-dev \
       musl-dev \
       openssl-dev \
