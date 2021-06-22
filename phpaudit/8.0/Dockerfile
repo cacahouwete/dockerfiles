@@ -52,7 +52,7 @@ RUN apk add --no-cache \
     wget https://github.com/Halleck45/PhpMetrics/raw/master/build/phpmetrics.phar && \
     chmod +x phpmetrics.phar && \
     mv phpmetrics.phar /usr/local/bin/phpmetrics && \
-    wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar && \
+    wget https://cs.symfony.com/download/php-cs-fixer-v2.phar && \
     chmod +x php-cs-fixer-v2.phar && \
     mv php-cs-fixer-v2.phar /usr/local/bin/php-cs-fixer && \
     echo "memory_limit = 1024M" >> /usr/local/etc/php/php.ini
