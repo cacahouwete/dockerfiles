@@ -1,4 +1,4 @@
-FROM php:8.0.9-fpm-alpine as bin
+FROM php:8.0.10-fpm-alpine as bin
 
 RUN apk add --no-cache \
         ca-certificates \
@@ -52,9 +52,9 @@ RUN apk add --no-cache \
     wget https://github.com/Halleck45/PhpMetrics/raw/master/build/phpmetrics.phar && \
     chmod +x phpmetrics.phar && \
     mv phpmetrics.phar /usr/local/bin/phpmetrics && \
-    wget https://cs.symfony.com/download/php-cs-fixer-v2.phar && \
-    chmod +x php-cs-fixer-v2.phar && \
-    mv php-cs-fixer-v2.phar /usr/local/bin/php-cs-fixer && \
+    wget https://cs.symfony.com/download/php-cs-fixer-v3.phar && \
+    chmod +x php-cs-fixer-v3.phar && \
+    mv php-cs-fixer-v3.phar /usr/local/bin/php-cs-fixer && \
     echo "memory_limit = 1024M" >> /usr/local/etc/php/php.ini
 
 FROM composer as src
