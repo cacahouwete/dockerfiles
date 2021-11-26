@@ -60,6 +60,7 @@ RUN apk add --no-cache \
 FROM composer as src
 
 RUN composer global require \
+        psr/log:2.0.0 \
         symfony/flex \
         symfony/thanks \
     	phpmd/phpmd \
