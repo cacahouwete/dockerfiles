@@ -1,0 +1,4 @@
+services:
+  phaudit:
+    image: cacahouete/phpaudit:8.0.15
+    build: .

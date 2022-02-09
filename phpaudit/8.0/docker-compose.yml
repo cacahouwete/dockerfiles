@@ -1,4 +1,0 @@
-services:
-  phaudit:
-    image: cacahouete/phpaudit:latest
-    build: .

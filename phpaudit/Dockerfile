@@ -1,4 +1,4 @@
-FROM php:8.0.14-fpm-alpine as bin
+FROM php:8.0.15-fpm-alpine as bin
 
 RUN apk add --no-cache \
         ca-certificates \
@@ -6,7 +6,6 @@ RUN apk add --no-cache \
         git \
         unzip \
         postgresql-dev \
-        nodejs \
         freetype \
         libpng \
         libjpeg-turbo \
