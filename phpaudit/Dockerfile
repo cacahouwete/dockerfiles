@@ -1,4 +1,4 @@
-FROM php:8.1.1-fpm-alpine as bin
+FROM php:8.1.2-fpm-alpine as bin
 
 RUN apk add --no-cache \
         ca-certificates \
@@ -6,7 +6,6 @@ RUN apk add --no-cache \
         git \
         unzip \
         postgresql-dev \
-        nodejs \
         freetype \
         libpng \
         libjpeg-turbo \
@@ -24,10 +23,10 @@ RUN apk add --no-cache --virtual .build-deps \
         icu-dev
 
 RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
-RUN      docker-php-ext-configure gd \
-        --with-freetype \
-        --with-jpeg
-RUN    docker-php-ext-install mysqli zip intl mbstring pdo pdo_mysql pdo_pgsql bcmath gd soap
+RUN docker-php-ext-configure gd \
+    --with-freetype \
+    --with-jpeg
+RUN docker-php-ext-install mysqli zip intl mbstring pdo pdo_mysql pdo_pgsql bcmath gd soap
 
 RUN pecl install apcu redis
 RUN docker-php-ext-enable apcu opcache redis
