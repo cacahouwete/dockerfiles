@@ -60,6 +60,7 @@ FROM composer as src
 
 RUN composer global require \
         psr/log:2.0.0 \
+        symfony/service-contracts:^2.5 \
         symfony/flex \
         symfony/thanks \
     	phpmd/phpmd \
