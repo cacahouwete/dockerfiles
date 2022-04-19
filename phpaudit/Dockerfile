@@ -1,4 +1,4 @@
-FROM php:8.1.4-fpm-alpine as bin
+FROM php:8.1.5-fpm-alpine as bin
 
 RUN apk add --no-cache \
         ca-certificates \
