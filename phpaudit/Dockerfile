@@ -1,4 +1,4 @@
-FROM php:8.1.5-fpm-alpine as bin
+FROM php:8.1.11-fpm-alpine as bin
 
 RUN apk add --no-cache \
         ca-certificates \
@@ -58,7 +58,9 @@ RUN apk add --no-cache \
 
 FROM composer as src
 
-RUN composer global require \
+RUN composer global config --no-plugins allow-plugins.symfony/flex true && \
+    composer global config --no-plugins allow-plugins.symfony/thanks true && \
+    composer global require \
         psr/log:2.0.0 \
         symfony/service-contracts:^2.5 \
         symfony/flex \
