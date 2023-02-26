@@ -1,4 +1,4 @@
-FROM php:8.2.0-fpm-alpine as bin
+FROM php:8.2.1-fpm-alpine as bin
 
 RUN apk add --no-cache \
         ca-certificates \
@@ -42,12 +42,6 @@ RUN apk add --no-cache \
     wget https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar && \
     chmod +x phpcbf.phar && \
     mv phpcbf.phar /usr/local/bin/phpcbf && \
-    wget https://phar.phpunit.de/phpcpd.phar && \
-    chmod +x phpcpd.phar && \
-    mv phpcpd.phar /usr/local/bin/phpcpd && \
-    wget https://phar.phpunit.de/phpdcd.phar && \
-    chmod +x phpdcd.phar && \
-    mv phpdcd.phar /usr/local/bin/phpdcd && \
     wget https://github.com/Halleck45/PhpMetrics/raw/master/build/phpmetrics.phar && \
     chmod +x phpmetrics.phar && \
     mv phpmetrics.phar /usr/local/bin/phpmetrics && \
