@@ -1,4 +1,4 @@
-FROM php:8.2.3-fpm-alpine as bin
+FROM php:8.2.4-fpm-alpine as bin
 
 RUN apk add --no-cache \
         ca-certificates \
@@ -16,23 +16,16 @@ RUN apk add --no-cache \
         libzip-dev \
         zlib-dev \
         libxml2-dev \
-        oniguruma-dev
-
-RUN apk add --no-cache --virtual .build-deps \
+        oniguruma-dev && \
+    apk add --no-cache --virtual .build-deps \
         $PHPIZE_DEPS \
-        icu-dev
-
-RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
-RUN docker-php-ext-configure gd \
-    --with-freetype \
-    --with-jpeg
-RUN docker-php-ext-install mysqli zip intl mbstring pdo pdo_mysql pdo_pgsql bcmath gd soap
-
-RUN pecl install apcu redis
-RUN docker-php-ext-enable apcu opcache redis
-
-RUN apk add --no-cache \
-        wget && \
+        wget \
+        icu-dev  && \
+    docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql && \
+    docker-php-ext-configure gd --with-freetype --with-jpeg && \
+    docker-php-ext-install mysqli zip intl mbstring pdo pdo_mysql pdo_pgsql bcmath gd soap && \
+    pecl install apcu redis && \
+    docker-php-ext-enable apcu opcache redis && \
     wget https://phar.phpunit.de/phploc.phar && \
     chmod +x phploc.phar && \
     mv phploc.phar /usr/local/bin/phploc && \
@@ -48,7 +41,8 @@ RUN apk add --no-cache \
     wget https://cs.symfony.com/download/php-cs-fixer-v3.phar && \
     chmod +x php-cs-fixer-v3.phar && \
     mv php-cs-fixer-v3.phar /usr/local/bin/php-cs-fixer && \
-    echo "memory_limit = 1024M" >> /usr/local/etc/php/php.ini
+    echo "memory_limit = 1024M" >> /usr/local/etc/php/php.ini &&\
+    apk del .build-deps
 
 FROM composer as src
 
