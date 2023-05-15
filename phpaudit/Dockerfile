@@ -1,26 +1,24 @@
-FROM php:8.2.4-fpm-alpine as bin
+FROM php:8.2.5-fpm-alpine as bin
 
 RUN apk add --no-cache \
         ca-certificates \
         icu-libs \
-        git \
-        unzip \
-        postgresql-dev \
         freetype \
         libpng \
         libjpeg-turbo \
-        freetype-dev \
-        libpng-dev \
-        libjpeg-turbo-dev \
         libzip \
-        libzip-dev \
-        zlib-dev \
-        libxml2-dev \
-        oniguruma-dev && \
+        postgresql-dev && \
     apk add --no-cache --virtual .build-deps \
         $PHPIZE_DEPS \
         wget \
-        icu-dev  && \
+        freetype-dev \
+        libpng-dev \
+        libjpeg-turbo-dev \
+        libzip-dev \
+        zlib-dev \
+        libxml2-dev \
+        icu-dev \
+        oniguruma-dev && \
     docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql && \
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-install mysqli zip intl mbstring pdo pdo_mysql pdo_pgsql bcmath gd soap && \
