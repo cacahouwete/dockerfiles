@@ -1,4 +1,4 @@
 services:
   phaudit:
-    image: cacahouete/phpaudit:8.2.7
+    image: cacahouete/phpaudit:8.2.8
     build: .
